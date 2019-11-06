@@ -12,7 +12,8 @@ const StockSearchForm = () => {
                         id="symbol" 
                         name="symbol" 
                         value={symbol}
-                        onChange={(evt) => {setSymbol(evt.target.value)}}/>
+                        onChange={(evt) => 
+                        {setSymbol(evt.target.value)}}/>
                     <button type="submit">View</button>
                 </form>
             </div>

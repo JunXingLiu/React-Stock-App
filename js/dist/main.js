@@ -1,2 +1,8 @@
 import { StockSearchForm } from './components/stock-search-form.js';
-ReactDOM.render(React.createElement(StockSearchForm, null), document.querySelector('.stock-display'));
+import { StockPricedisplay } from './components/stock-price-display.js';
+import { Stock } from './stock.js';
+ReactDOM.render(React.createElement(StockPricedisplay, {
+  stock: new Stock({
+    symbol: 'msft'
+  })
+}), document.querySelector('.stock-display'));
