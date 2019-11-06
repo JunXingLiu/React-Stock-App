@@ -9,14 +9,16 @@ const StockPricedisplay = (props) => {
                 });
     }, [props.stock]);
 
+    const currency = ( value) => (+value).toLocaleString('en-US', {style: 'currency', currency: 'USD'})
+
     return(
         <div>
-        {stockData 
+        {stockData
             ? (      <React.Fragment>
                         <div className="details">
                             <div>Symbol: {stockData.symbol}</div>
                             <div>Date: {stockData.date}</div>
-                            <div>Price: {stockData.price}</div>
+                            <div>Price: {currency(stockData.price)}</div>
                         </div>
                     <div>
                         <button className="btn-history">Previous 5 Days</button>

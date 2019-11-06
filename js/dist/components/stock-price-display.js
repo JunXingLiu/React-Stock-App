@@ -25,9 +25,17 @@ var StockPricedisplay = function StockPricedisplay(props) {
       setStockData(_objectSpread({}, data));
     });
   }, [props.stock]);
+
+  var currency = function currency(value) {
+    return (+value).toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD'
+    });
+  };
+
   return React.createElement("div", null, stockData ? React.createElement(React.Fragment, null, React.createElement("div", {
     className: "details"
-  }, React.createElement("div", null, "Symbol: ", stockData.symbol), React.createElement("div", null, "Date: ", stockData.date), React.createElement("div", null, "Price: ", stockData.price)), React.createElement("div", null, React.createElement("button", {
+  }, React.createElement("div", null, "Symbol: ", stockData.symbol), React.createElement("div", null, "Date: ", stockData.date), React.createElement("div", null, "Price: ", currency(stockData.price))), React.createElement("div", null, React.createElement("button", {
     className: "btn-history"
   }, "Previous 5 Days"), React.createElement("div", {
     className: "history"
