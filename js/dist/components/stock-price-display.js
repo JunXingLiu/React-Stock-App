@@ -15,15 +15,25 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var StockPricedisplay = function StockPricedisplay(props) {
   var stock = props.stock;
 
-  var _React$useState = React.useState(null),
+  var _React$useState = React.useState({}),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       stockData = _React$useState2[0],
       setStockData = _React$useState2[1];
 
   React.useEffect(function () {
-    stock.getStockPrice().then(function (data) {
-      setStockData(_objectSpread({}, data));
-    });
+    if (stock.symbol) {
+      stock.getStockPrice().then(function (data) {
+        if (data instanceof Object) {
+          setStockData(_objectSpread({}, data));
+        } else {
+          setStockData({
+            error: data
+          });
+        }
+      });
+    }
+
+    ;
   }, [props.stock]);
 
   var currency = function currency(value) {
@@ -33,13 +43,13 @@ var StockPricedisplay = function StockPricedisplay(props) {
     });
   };
 
-  return React.createElement("div", null, stockData ? React.createElement(React.Fragment, null, React.createElement("div", {
+  return React.createElement("div", null, stockData.symbol ? React.createElement(React.Fragment, null, React.createElement("div", {
     className: "details"
   }, React.createElement("div", null, "Symbol: ", stockData.symbol), React.createElement("div", null, "Date: ", stockData.date), React.createElement("div", null, "Price: ", currency(stockData.price))), React.createElement("div", null, React.createElement("button", {
     className: "btn-history"
   }, "Previous 5 Days"), React.createElement("div", {
     className: "history"
-  }))) : React.createElement("p", null, "No Data"));
+  }))) : React.createElement(React.Fragment, null, React.createElement("p", null, "No Data"), stockData.error && React.createElement("p", null, stockData.error)));
 };
 
 export { StockPricedisplay };

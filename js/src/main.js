@@ -1,5 +1,3 @@
-import { StockSearchForm } from './components/stock-search-form.js';
-import { StockPricedisplay } from './components/stock-price-display.js';
-import { Stock } from './stock.js';
+import { App } from './components/app.js';
 
-ReactDOM.render(<StockPricedisplay stock={new Stock({symbol: 'msft'})}/>, document.querySelector('.stock-display'));
+ReactDOM.render(<App/>, document.querySelector('.stock-display'));

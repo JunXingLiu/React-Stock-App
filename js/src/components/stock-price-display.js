@@ -1,19 +1,28 @@
 const StockPricedisplay = (props) => {
     const {stock} = props;
-    const [stockData, setStockData] = React.useState(null);
+    const [stockData, setStockData] = React.useState({});
 
     React.useEffect(() => {
-        stock.getStockPrice()
-                .then(data => {
+        if(stock.symbol){
+            stock.
+            getStockPrice()
+            .then(data => {
+                if(data instanceof Object){
                     setStockData({...data});
-                });
-    }, [props.stock]);
-
+                } else{
+                    setStockData({
+                        error: data
+                    })
+                }
+            }
+            )};
+        }, [props.stock]);
+        
     const currency = ( value) => (+value).toLocaleString('en-US', {style: 'currency', currency: 'USD'})
 
     return(
         <div>
-        {stockData
+        {stockData.symbol
             ? (      <React.Fragment>
                         <div className="details">
                             <div>Symbol: {stockData.symbol}</div>
@@ -26,7 +35,10 @@ const StockPricedisplay = (props) => {
                     </div>
                     </React.Fragment>
             ):(
-                <p>No Data</p>
+                <React.Fragment>
+                    <p>No Data</p>
+                    {stockData.error && <p>{stockData.error}</p>}
+                </React.Fragment>
             )
         }
         </div>

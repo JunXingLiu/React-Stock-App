@@ -6,35 +6,23 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var StockSearchForm = function StockSearchForm(props) {
+import { StockSearchForm } from './stock-search-form.js';
+import { StockPricedisplay } from './stock-price-display.js';
+import { Stock } from '../stock.js';
+
+var App = function App() {
   var _React$useState = React.useState(''),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       symbol = _React$useState2[0],
       setSymbol = _React$useState2[1];
 
-  var submitCallback = props.submitCallback;
-
-  var handleSubmit = function handleSubmit(evt) {
-    evt.preventDefault();
-    submitCallback(symbol);
-  };
-
-  return React.createElement("div", null, React.createElement("form", {
-    className: "frm symbol",
-    onSubmit: handleSubmit
-  }, React.createElement("label", {
-    htmlFor: "symbol"
-  }, "Stock Symbol"), React.createElement("input", {
-    type: "text",
-    id: "symbol",
-    name: "symbol",
-    value: symbol,
-    onChange: function onChange(evt) {
-      setSymbol(evt.target.value);
-    }
-  }), React.createElement("button", {
-    type: "submit"
-  }, "View")));
+  return React.createElement(React.Fragment, null, React.createElement("h1", null, "Stock Finder"), React.createElement(StockSearchForm, {
+    submitCallback: setSymbol
+  }), React.createElement(StockPricedisplay, {
+    stock: new Stock({
+      symbol: symbol
+    })
+  }));
 };
 
-export { StockSearchForm };
+export { App };

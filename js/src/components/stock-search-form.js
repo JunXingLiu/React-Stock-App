@@ -1,8 +1,11 @@
-const StockSearchForm = () => {
+const StockSearchForm = (props) => {
     const [symbol, setSymbol] = React.useState('');
+
+    const {submitCallback} = props;
+
     const handleSubmit = evt => {
-        console.log(symbol)
         evt.preventDefault();
+        submitCallback(symbol);
     }
     return (
             <div>
@@ -20,4 +23,4 @@ const StockSearchForm = () => {
         );
 }
 
-export {StockSearchForm};
+export { StockSearchForm };
