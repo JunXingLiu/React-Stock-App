@@ -1,3 +1,5 @@
+import {StockHistoryList} from './stock-history-list.js';
+
 const StockPricedisplay = (props) => {
     const {stock} = props;
     const [stockData, setStockData] = React.useState({});
@@ -20,6 +22,15 @@ const StockPricedisplay = (props) => {
         
     const currency = ( value) => (+value).toLocaleString('en-US', {style: 'currency', currency: 'USD'})
 
+    const handleClick = evt => {
+        if(!stockData.history){
+            stock.getStockFiveDayHistory()
+            .then(data => {
+                setStockData({...stock.stockData})
+            });
+        };
+    };
+
     return(
         <div>
         {stockData.symbol
@@ -30,8 +41,12 @@ const StockPricedisplay = (props) => {
                             <div>Price: {currency(stockData.price)}</div>
                         </div>
                     <div>
-                        <button className="btn-history">Previous 5 Days</button>
-                        <div className="history"></div>
+                        <button className="btn-history" onClick={handleClick}>Previous 5 Days</button>
+                        {stockData.history && 
+                        <div className="history">
+                            <StockHistoryList history={stockData.history}/>
+                        </div>
+                        }
                     </div>
                     </React.Fragment>
             ):(
