@@ -1,5 +1,6 @@
 import {StockHistoryList} from './stock-history-list.js';
 
+
 const StockPricedisplay = (props) => {
     const {stock} = props;
     const [stockData, setStockData] = React.useState({});

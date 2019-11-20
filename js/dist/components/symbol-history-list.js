@@ -6,26 +6,14 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-import { StockSearchForm } from './stock-search-form.js';
-import { StockPricedisplay } from './stock-price-display.js';
-import { Stock } from '../stock.js';
-import { SymbolHistoryList } from './symbol-history-list.js';
+var SymbolHistoryList = function SymbolHistoryList(symbolHistory) {
+  var _React$useState = React.useState([]),
+      _React$useState2 = _slicedToArray(_React$useState, 1),
+      stocks = _React$useState2[0];
 
-var App = function App() {
-  var _React$useState = React.useState(''),
-      _React$useState2 = _slicedToArray(_React$useState, 2),
-      symbol = _React$useState2[0],
-      setSymbol = _React$useState2[1];
-
-  return React.createElement(React.Fragment, null, React.createElement("h1", null, "Stock Finder"), React.createElement(StockSearchForm, {
-    submitCallback: setSymbol
-  }), React.createElement(StockPricedisplay, {
-    stock: new Stock({
-      symbol: symbol
-    })
-  }), React.createElement(SymbolHistoryList, {
-    stockHistory: symbol
-  }));
+  return React.createElement(React.Fragment, null, React.createElement("ul", null, stocks.push(symbolHistory), stocks.map(function (stock) {
+    stock;
+  })));
 };
 
-export { App };
+export { SymbolHistoryList };
