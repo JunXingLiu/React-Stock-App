@@ -1,5 +1,5 @@
 import {StockHistoryList} from './stock-history-list.js';
-
+import { SymbolHistoryList } from './symbol-history-list.js';
 
 const StockPricedisplay = (props) => {
     const {stock} = props;
@@ -12,6 +12,7 @@ const StockPricedisplay = (props) => {
             .then(data => {
                 if(data instanceof Object){
                     setStockData({...data});
+                
                 } else{
                     setStockData({
                         error: data
@@ -49,7 +50,8 @@ const StockPricedisplay = (props) => {
                         </div>
                         }
                     </div>
-                    </React.Fragment>
+                   
+                    </React.Fragment> 
             ):(
                 <React.Fragment>
                     <p>No Data</p>
@@ -57,6 +59,12 @@ const StockPricedisplay = (props) => {
                 </React.Fragment>
             )
         }
+        {
+            stockData.symbol 
+                ? <SymbolHistoryList stockHistory={stockData.symbol}/>
+                : <SymbolHistoryList stockHistory={''}/>
+        }
+
         </div>
         );
 };

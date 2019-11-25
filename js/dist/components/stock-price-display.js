@@ -13,6 +13,7 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 import { StockHistoryList } from './stock-history-list.js';
+import { SymbolHistoryList } from './symbol-history-list.js';
 
 var StockPricedisplay = function StockPricedisplay(props) {
   var stock = props.stock;
@@ -64,7 +65,11 @@ var StockPricedisplay = function StockPricedisplay(props) {
     className: "history"
   }, React.createElement(StockHistoryList, {
     history: stockData.history
-  })))) : React.createElement(React.Fragment, null, React.createElement("p", null, "No Data"), stockData.error && React.createElement("p", null, stockData.error)));
+  })))) : React.createElement(React.Fragment, null, React.createElement("p", null, "No Data"), stockData.error && React.createElement("p", null, stockData.error)), stockData.symbol ? React.createElement(SymbolHistoryList, {
+    stockHistory: stockData.symbol
+  }) : React.createElement(SymbolHistoryList, {
+    stockHistory: ''
+  }));
 };
 
 export { StockPricedisplay };

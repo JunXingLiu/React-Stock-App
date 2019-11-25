@@ -4,6 +4,7 @@ import { Stock } from '../stock.js';
 import { SymbolHistoryList } from './symbol-history-list.js';
 
 
+
 const App = () => {
     const [symbol, setSymbol] = React.useState('');
     
@@ -12,7 +13,6 @@ const App = () => {
             <h1>Stock Finder</h1>
             <StockSearchForm submitCallback={setSymbol}/>
             <StockPricedisplay stock={new Stock({symbol: symbol})}/>
-            <SymbolHistoryList stockHistory={symbol}/>
         </React.Fragment>
     )
 };

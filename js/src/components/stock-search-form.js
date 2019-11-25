@@ -8,6 +8,7 @@ const StockSearchForm = (props) => {
         submitCallback(symbol);
     }
     return (
+        <React.Fragment>
             <div>
                 <form className="frm symbol" onSubmit={handleSubmit}>
                     <label htmlFor="symbol">Stock Symbol</label>
@@ -20,6 +21,8 @@ const StockSearchForm = (props) => {
                     <button type="submit">View</button>
                 </form>
             </div>
+
+        </React.Fragment>
         );
 }
 

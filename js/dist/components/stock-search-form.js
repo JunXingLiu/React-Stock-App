@@ -19,7 +19,7 @@ var StockSearchForm = function StockSearchForm(props) {
     submitCallback(symbol);
   };
 
-  return React.createElement("div", null, React.createElement("form", {
+  return React.createElement(React.Fragment, null, React.createElement("div", null, React.createElement("form", {
     className: "frm symbol",
     onSubmit: handleSubmit
   }, React.createElement("label", {
@@ -34,7 +34,7 @@ var StockSearchForm = function StockSearchForm(props) {
     }
   }), React.createElement("button", {
     type: "submit"
-  }, "View")));
+  }, "View"))));
 };
 
 export { StockSearchForm };

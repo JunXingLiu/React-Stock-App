@@ -6,13 +6,28 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var SymbolHistoryList = function SymbolHistoryList(symbolHistory) {
+var SymbolHistoryList = function SymbolHistoryList(props) {
   var _React$useState = React.useState([]),
       _React$useState2 = _slicedToArray(_React$useState, 1),
       stocks = _React$useState2[0];
 
-  return React.createElement(React.Fragment, null, React.createElement("ul", null, stocks.push(symbolHistory), stocks.map(function (stock) {
-    stock;
+  if (props.stockHistory != '') {
+    if (stocks.includes(props.stockHistory)) {
+      var index = stocks.indexOf(props.stockHistory);
+      stocks.splice(index, 1);
+    }
+
+    stocks.unshift(props.stockHistory);
+    console.log(props.stockHistory);
+  }
+
+  return React.createElement(React.Fragment, null, React.createElement("ul", null, stocks.slice(0, 5).map(function (stock) {
+    return React.createElement("li", {
+      key: stock,
+      onClick: function onClick(e) {
+        return e.target.textContent;
+      }
+    }, stock);
   })));
 };
 
