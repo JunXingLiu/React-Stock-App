@@ -13,6 +13,7 @@ const App = () => {
             <h1>Stock Finder</h1>
             <StockSearchForm submitCallback={setSymbol}/>
             <StockPricedisplay stock={new Stock({symbol: symbol})}/>
+            <SymbolHistoryList stockHistory={symbol}/>
         </React.Fragment>
     )
 };

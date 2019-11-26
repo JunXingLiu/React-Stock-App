@@ -1,19 +1,17 @@
 const SymbolHistoryList = (props) => {
-    const [stocks] = React.useState([]);
+    const [stocks, addStocks] = React.useState([]);
+    const [symbol, setSymbol] = React.useState('');
 
-    if(props.stockHistory != ''){
-        if((stocks.includes(props.stockHistory))){
-            const index = stocks.indexOf(props.stockHistory);
-            stocks.splice(index, 1)
-        }
-        stocks.unshift(props.stockHistory)
-        console.log(props.stockHistory)
-    }
+    React.useEffect(() => {
+        setSymbol(props.stockHistory);
+        addStocks([...symbol])
+    }, [props.stockHistory])
+
     return (
         <React.Fragment>
             <ul>
                 {
-                    stocks.slice(0,5).map((stock) => <li key={stock} onClick={ e => e.target.textContent}>{stock}</li>)
+                    stocks.slice(0,5).map((stock, index) => <li key={index} onClick={ e => e.target.textContent}>{stock}</li>)
                 }
             </ul>
         </React.Fragment>
