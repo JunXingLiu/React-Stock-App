@@ -23,8 +23,6 @@ var App = function App() {
     stock: new Stock({
       symbol: symbol
     })
-  }), React.createElement(SymbolHistoryList, {
-    stockHistory: symbol
   }));
 };
 

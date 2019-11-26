@@ -7,7 +7,9 @@ const SymbolHistoryList = (props) => {
         if(stocks.slice(0,5).indexOf(symbol) > -1){
             stocks.splice(stocks.indexOf(symbol), 1)
         }
-        addStocks([ symbol, ...stocks])
+        if(!symbol == ''){
+            addStocks([ symbol, ...stocks])
+        }
     }, [props.stockHistory])
 
     return (

@@ -32,7 +32,9 @@ var SymbolHistoryList = function SymbolHistoryList(props) {
       stocks.splice(stocks.indexOf(symbol), 1);
     }
 
-    addStocks([symbol].concat(_toConsumableArray(stocks)));
+    if (!symbol == '') {
+      addStocks([symbol].concat(_toConsumableArray(stocks)));
+    }
   }, [props.stockHistory]);
   return React.createElement(React.Fragment, null, React.createElement("ul", null, stocks.map(function (stock, index) {
     return React.createElement("li", {

@@ -59,6 +59,10 @@ const StockPricedisplay = (props) => {
                 </React.Fragment>
             )
         }
+        {
+            stockData.symbol ? (<SymbolHistoryList stockHistory={stockData.symbol}/>)
+            : <SymbolHistoryList stockHistory={''}/>
+        }
 
         </div>
         );
