@@ -4,14 +4,17 @@ const SymbolHistoryList = (props) => {
 
     React.useEffect(() => {
         setSymbol(props.stockHistory);
-        addStocks([...symbol])
+        if(stocks.slice(0,5).indexOf(symbol) > -1){
+            stocks.splice(stocks.indexOf(symbol), 1)
+        }
+        addStocks([ symbol, ...stocks])
     }, [props.stockHistory])
 
     return (
         <React.Fragment>
             <ul>
                 {
-                    stocks.slice(0,5).map((stock, index) => <li key={index} onClick={ e => e.target.textContent}>{stock}</li>)
+                    stocks.map((stock, index) => <li key={index} onClick={ e => e.target.textContent}>{stock}</li>)
                 }
             </ul>
         </React.Fragment>

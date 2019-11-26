@@ -27,9 +27,14 @@ var SymbolHistoryList = function SymbolHistoryList(props) {
 
   React.useEffect(function () {
     setSymbol(props.stockHistory);
-    addStocks(_toConsumableArray(symbol));
+
+    if (stocks.slice(0, 5).indexOf(symbol) > -1) {
+      stocks.splice(stocks.indexOf(symbol), 1);
+    }
+
+    addStocks([symbol].concat(_toConsumableArray(stocks)));
   }, [props.stockHistory]);
-  return React.createElement(React.Fragment, null, React.createElement("ul", null, stocks.slice(0, 5).map(function (stock, index) {
+  return React.createElement(React.Fragment, null, React.createElement("ul", null, stocks.map(function (stock, index) {
     return React.createElement("li", {
       key: index,
       onClick: function onClick(e) {
