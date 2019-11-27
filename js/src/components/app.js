@@ -12,7 +12,7 @@ const App = () => {
         <React.Fragment>
             <h1>Stock Finder</h1>
             <StockSearchForm submitCallback={setSymbol}/>
-            <StockPricedisplay stock={new Stock({symbol: symbol})}/>
+            <StockPricedisplay stock={new Stock({symbol: symbol})} callBack={setSymbol}/>
         </React.Fragment>
     )
 };

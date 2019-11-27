@@ -15,6 +15,9 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var SymbolHistoryList = function SymbolHistoryList(props) {
+  var stockHistory = props.stockHistory,
+      callBack = props.callBack;
+
   var _React$useState = React.useState([]),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       stocks = _React$useState2[0],
@@ -26,7 +29,7 @@ var SymbolHistoryList = function SymbolHistoryList(props) {
       setSymbol = _React$useState4[1];
 
   React.useEffect(function () {
-    setSymbol(props.stockHistory);
+    setSymbol(stockHistory);
 
     if (stocks.slice(0, 5).indexOf(symbol) > -1) {
       stocks.splice(stocks.indexOf(symbol), 1);
@@ -35,12 +38,12 @@ var SymbolHistoryList = function SymbolHistoryList(props) {
     if (!symbol == '') {
       addStocks([symbol].concat(_toConsumableArray(stocks)));
     }
-  }, [props.stockHistory]);
+  }, [stockHistory]);
   return React.createElement(React.Fragment, null, React.createElement("ul", null, stocks.map(function (stock, index) {
     return React.createElement("li", {
       key: index,
       onClick: function onClick(e) {
-        return e.target.textContent;
+        return callBack(e.target.textContent);
       }
     }, stock);
   })));

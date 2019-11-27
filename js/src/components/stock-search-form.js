@@ -7,6 +7,7 @@ const StockSearchForm = (props) => {
         evt.preventDefault();
         submitCallback(symbol);
     }
+    
     return (
         <React.Fragment>
             <div>

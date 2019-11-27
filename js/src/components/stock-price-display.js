@@ -2,7 +2,7 @@ import {StockHistoryList} from './stock-history-list.js';
 import { SymbolHistoryList } from './symbol-history-list.js';
 
 const StockPricedisplay = (props) => {
-    const {stock} = props;
+    const {stock, callBack} = props;
     const [stockData, setStockData] = React.useState({});
 
     React.useEffect(() => {
@@ -60,7 +60,7 @@ const StockPricedisplay = (props) => {
             )
         }
         {
-            stockData.symbol ? (<SymbolHistoryList stockHistory={stockData.symbol}/>)
+            stockData.symbol ? (<SymbolHistoryList stockHistory={stockData.symbol} callBack={callBack}/>)
             : <SymbolHistoryList stockHistory={''}/>
         }
 

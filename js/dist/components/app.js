@@ -22,7 +22,8 @@ var App = function App() {
   }), React.createElement(StockPricedisplay, {
     stock: new Stock({
       symbol: symbol
-    })
+    }),
+    callBack: setSymbol
   }));
 };
 

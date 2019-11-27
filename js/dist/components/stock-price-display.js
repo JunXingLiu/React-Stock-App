@@ -16,7 +16,8 @@ import { StockHistoryList } from './stock-history-list.js';
 import { SymbolHistoryList } from './symbol-history-list.js';
 
 var StockPricedisplay = function StockPricedisplay(props) {
-  var stock = props.stock;
+  var stock = props.stock,
+      callBack = props.callBack;
 
   var _React$useState = React.useState({}),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -66,7 +67,8 @@ var StockPricedisplay = function StockPricedisplay(props) {
   }, React.createElement(StockHistoryList, {
     history: stockData.history
   })))) : React.createElement(React.Fragment, null, React.createElement("p", null, "No Data"), stockData.error && React.createElement("p", null, stockData.error)), stockData.symbol ? React.createElement(SymbolHistoryList, {
-    stockHistory: stockData.symbol
+    stockHistory: stockData.symbol,
+    callBack: callBack
   }) : React.createElement(SymbolHistoryList, {
     stockHistory: ''
   }));
