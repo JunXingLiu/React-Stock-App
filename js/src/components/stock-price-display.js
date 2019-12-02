@@ -1,5 +1,6 @@
 import {StockHistoryList} from './stock-history-list.js';
 import { SymbolHistoryList } from './symbol-history-list.js';
+import React from 'react';
 
 const StockPricedisplay = (props) => {
     const {stock, callBack} = props;

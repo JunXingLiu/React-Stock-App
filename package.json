@@ -4,11 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "babel": "npx babel js/src/ --out-dir js/dist/ --ignore \"js/src/**/*.handlebars\"",
-    "watch": "npx babel js/src/ --out-dir js/dist/ --ignore \"js/src/**/*.handlebars\" --watch",
-    "handlebars": "npx handlebars js/src/templates/ -f js/dist/templates.js -k each",
     "test": "npx mocha -r esm",
-    "build": "npm run babel && npm run handlebars"
+    "build": "npx webpack --mode production -r esm",
+    "start": "npx webpack-dev-server --open --mode development -r esm"
   },
   "keywords": [],
   "author": "",
@@ -18,14 +16,19 @@
     "@babel/core": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
     "@babel/preset-react": "^7.6.3",
+    "babel-loader": "^8.0.6",
     "babel-plugin-iife-wrap": "^1.1.0",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "esm": "^3.2.25",
     "fetch-mock": "^7.5.1",
     "handlebars": "^4.4.2",
+    "html-webpack-plugin": "^3.2.0",
     "mocha": "^6.2.2",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
   },
   "babel": {
     "presets": [
@@ -39,5 +42,9 @@
         "@babel/preset-react"
       ]
     ]
+  },
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   }
 }

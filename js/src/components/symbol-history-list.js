@@ -1,3 +1,4 @@
+import React from 'react';
 const SymbolHistoryList = (props) => {
     const {stockHistory, callBack} = props;
     const [stocks, addStocks] = React.useState([]);

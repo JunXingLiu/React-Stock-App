@@ -1,3 +1,4 @@
+import React from 'react';
 const StockSearchForm = (props) => {
     const [symbol, setSymbol] = React.useState('');
 

@@ -2,6 +2,7 @@ import { StockSearchForm } from './stock-search-form.js';
 import { StockPricedisplay } from './stock-price-display.js';
 import { Stock } from '../stock.js';
 import { SymbolHistoryList } from './symbol-history-list.js';
+import React from 'react';
 
 
 

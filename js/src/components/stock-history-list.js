@@ -1,3 +1,5 @@
+import React from 'react';
+
 const StockHistoryList = (props) => {
 
     const currency = ( value) => (+value).toLocaleString('en-US', {style: 'currency', currency: 'USD'})
