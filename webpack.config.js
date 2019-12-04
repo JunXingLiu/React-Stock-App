@@ -1,6 +1,7 @@
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import webpack from 'webpack';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 export default{
     entry: './js/src/main.js',
@@ -16,6 +17,17 @@ export default{
                 use: {
                     loader: 'babel-loader'
                 }
+            },
+            {
+                test: /.css$/,
+                use:[
+                    'style-loader',
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: { hmr: true }
+                    },
+                    'css-loader'
+                ]
             }
         ]
     },
@@ -26,7 +38,10 @@ export default{
             favicon: './favicon.ico',
             filename: './index.html'
         }),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new MiniCssExtractPlugin({
+            filename: 'main.css'
+        })
     ],
     devServer: {
         contentBase: './build/',
