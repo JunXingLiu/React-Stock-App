@@ -2,6 +2,7 @@ import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import {CleanWebpackPlugin} from 'clean-webpack-plugin';
 
 export default{
     entry: './js/src/main.js',
@@ -36,12 +37,14 @@ export default{
             template: './index.html',
             inject: true,
             favicon: './favicon.ico',
-            filename: './index.html'
+            filename: './index.html',
+            hash: true
         }),
         new webpack.HotModuleReplacementPlugin(),
         new MiniCssExtractPlugin({
             filename: 'main.css'
-        })
+        }),
+        new CleanWebpackPlugin()
     ],
     devServer: {
         contentBase: './build/',
